@@ -22,7 +22,7 @@ const app = () => {
         Mortgage Amount
       </label>
       <div className="flex col-span-2">
-        <input type="text" name="mortgage-amount"/>
+        <input type="text" name="mortgage-amount" className="w-full" />
       </div>
       <label htmlFor="mortgage-term">Mortgage Term</label>
       <label htmlFor="interest-rate">Interest Rate</label>
@@ -32,6 +32,28 @@ const app = () => {
       <div className="flex">
         <input type="text" name="interest-rate" />
       </div>
+
+      <div className="col-span-2 has-[:checked]:bg-blue-100">
+        <input
+          type="radio"
+          name="mortgage-type"
+          id="repayment"
+          value="repayment"
+        />
+        <label htmlFor="repayment">Repayment</label>
+      </div>
+
+      <div className="col-span-2 has-[:checked]:bg-lime has-[:checked]:bg-opacity-30">
+        <input 
+          type="radio"
+          name="mortgage-type"
+          id="interest-only"
+          value="interest-only"
+        />
+        <label htmlFor="interest-only">Interest Only</label>
+      </div>
+
+      <button>Calculate Repayments</button>
     </div>
   );
 };
