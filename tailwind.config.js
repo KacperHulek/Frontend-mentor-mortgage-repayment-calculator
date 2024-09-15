@@ -2,7 +2,16 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      borderRadius: {
+        gigaxl: "5rem",
+      },
+
+      spacing: {
+        '4_5xl': '60rem',
+
+      }
+    },
     colors: {
       lime: "hsl(61, 70%, 52%)",
       red: "hsl(4, 69%, 50%)",
