@@ -8,9 +8,8 @@ export default {
       },
 
       spacing: {
-        '4_5xl': '60rem',
-
-      }
+        "4_5xl": "60rem",
+      },
     },
     colors: {
       lime: "hsl(61, 70%, 52%)",
@@ -23,6 +22,7 @@ export default {
         700: "hsl(200, 24%, 40%)",
         900: "hsl(202, 55%, 16%)",
       },
+      darkLime: "hsl(61, 70%, 42%)",
     },
   },
   plugins: [],
