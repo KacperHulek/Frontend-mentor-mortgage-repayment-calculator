@@ -8,7 +8,7 @@ const App = () => {
   const [mortgageAmount, setMortgageAmount] = useState("");
   const [mortgageTerm, setMortgageTerm] = useState("");
   const [interestRate, setInterestRate] = useState("");
-  const [mortgageType, setMortgageType] = useState("repayment");
+  const [mortgageType, setMortgageType] = useState("");
   const [monthlyRepayment, setMonthlyRepayment] = useState(null);
   const [totalRepayment, setTotalRepayment] = useState(null);
   const [showResults, setShowResults] = useState(false);
@@ -54,7 +54,7 @@ const App = () => {
               setMortgageAmount("");
               setMortgageTerm("");
               setInterestRate("");
-              setMortgageType("repayment");
+              setMortgageType("");
               setMonthlyRepayment(null);
               setShowResults(false);
             }}
@@ -89,6 +89,7 @@ const App = () => {
             mortgageTypes={mortgageTypes}
             title="Mortgage type"
             onChange={(value) => setMortgageType(value)}
+            selectedMortgageType={mortgageType}
           />
           <CalculateRepaymentsBtn onClick={calculateRepayments} />
         </div>

@@ -1,6 +1,6 @@
 import React from "react";
 
-const MortgageType = ({ value, label, onChange }) => {
+const MortgageType = ({ value, label, onChange, checked }) => {
   return (
     <li className="col-span-4">
       <label className="overflow-hidden hover:cursor-pointer">
@@ -13,6 +13,7 @@ const MortgageType = ({ value, label, onChange }) => {
             name="mortgage-type"
             value={value}
             onChange={onChange}
+            checked={checked}
             className=" ml-4 appearance-none text-slate-900 border-2 w-4 h-4 min-w-4 min-h-4 rounded-full grid place-content-center
             before:w-2 before:h-2 before:rounded-full before:border before:bg-slate-900 before:scale-0 checked:before:scale-100
             checked:text-lime checked:before:bg-lime"
