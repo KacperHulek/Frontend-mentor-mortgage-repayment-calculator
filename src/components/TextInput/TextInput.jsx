@@ -1,6 +1,6 @@
 import React from "react";
 
-const TextInput = ({ title, innerText, isLeft, colSpan }) => {
+const TextInput = ({ title, innerText, isLeft, colSpan, value, onChange }) => {
   let labelClassName;
 
   switch (colSpan) {
@@ -26,6 +26,8 @@ const TextInput = ({ title, innerText, isLeft, colSpan }) => {
           type="text"
           name="mortgage-amount"
           className="w-full outline-none hover:cursor-pointer pl-4 font-bold  min-w-fit peer"
+          value={value}
+          onChange={onChange}
         />
         <div className="h-full text-center w-fit p-4 bg-slate-100 text-slate-700 flex items-center peer-focus:bg-lime">
           <p className="text-center w-full font-bold">{innerText}</p>
@@ -40,6 +42,8 @@ const TextInput = ({ title, innerText, isLeft, colSpan }) => {
           type="text"
           name="mortgage-amount"
           className="w-full outline-none hover:cursor-pointer pl-4 font-bold peer"
+          value={value}
+          onChange={onChange}
         />
         <div className="h-full text-center w-fit p-4 bg-slate-100 text-slate-700 flex items-center peer-focus:bg-lime">
           <p className="text-center w-full font-bold">{innerText}</p>

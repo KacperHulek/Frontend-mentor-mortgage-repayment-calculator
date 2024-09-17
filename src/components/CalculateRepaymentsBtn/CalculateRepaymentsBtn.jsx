@@ -1,8 +1,12 @@
 import React from "react";
 
-const CalculateRepaymentsBtn = () => {
+const CalculateRepaymentsBtn = ({ onClick }) => {
   return (
-    <button className="col-span-3 rounded-full h-12 bg-lime flex align justify-center items-center mt-6 hover:bg-opacity-65 active:bg-darkLime transition-colors transition-opacity">
+    <button
+      className="col-span-3 rounded-full h-12 bg-lime flex align justify-center items-center mt-6 hover:bg-opacity-65
+     active:bg-darkLime transition-colors transition-opacity"
+      onClick={onClick}
+    >
       <img
         src="src\assets\images\icon-calculator.svg"
         alt=""

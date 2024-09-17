@@ -9,6 +9,7 @@ export default {
 
       spacing: {
         "4_5xl": "60rem",
+        "0.25": "0.0625rem",
       },
     },
     colors: {
@@ -22,6 +23,7 @@ export default {
         700: "hsl(200, 24%, 40%)",
         900: "hsl(202, 55%, 16%)",
       },
+      darkSlate: "hsl(202, 55%, 12%)",
       darkLime: "hsl(61, 70%, 42%)",
     },
   },
