@@ -12,33 +12,86 @@ const App = () => {
   const [monthlyRepayment, setMonthlyRepayment] = useState(null);
   const [totalRepayment, setTotalRepayment] = useState(null);
   const [showResults, setShowResults] = useState(false);
+  const [errors, setErrors] = useState({});
 
   const mortgageTypes = [
     { value: "repayment", label: "Repayment" },
     { value: "interest-only", label: "Interest Only" },
   ];
 
-  const calculateRepayments = () => {
-    const principal = parseFloat(mortgageAmount);
-    const annualRate = parseFloat(interestRate) / 100 / 12;
-    const totalPayments = parseFloat(mortgageTerm) * 12;
+  const validateInputs = () => {
+    const newErrors = {};
 
-    let monthlyPayment;
-    let totalAmount;
-
-    if (mortgageType === "repayment") {
-      monthlyPayment =
-        (principal * annualRate * Math.pow(1 + annualRate, totalPayments)) /
-        (Math.pow(1 + annualRate, totalPayments) - 1);
-    } else {
-      // Interest-only calculation
-      monthlyPayment = principal * annualRate;
+    if (
+      !mortgageAmount ||
+      isNaN(mortgageAmount) ||
+      parseFloat(mortgageAmount) <= 0
+    ) {
+      newErrors.mortgageAmount = "Please enter a valid mortgage amount";
     }
 
-    totalAmount = totalPayments * monthlyPayment;
-    setMonthlyRepayment(monthlyPayment.toFixed(2));
-    setTotalRepayment(totalAmount);
-    setShowResults(true);
+    if (
+      !mortgageTerm ||
+      isNaN(mortgageTerm) ||
+      parseInt(mortgageTerm) <= 0 ||
+      !Number.isInteger(parseFloat(mortgageTerm))
+    ) {
+      newErrors.mortgageTerm = "Please enter a valid mortgage term in years";
+    }
+
+    if (
+      !interestRate ||
+      isNaN(interestRate) ||
+      parseFloat(interestRate) < 0 ||
+      parseFloat(interestRate) > 100
+    ) {
+      newErrors.interestRate =
+        "Please enter a valid interest rate between 0 and 100";
+    }
+
+    if (!mortgageType) {
+      newErrors.mortgageType = "Please select a mortgage type";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const calculateRepayments = () => {
+    if (validateInputs()) {
+      const principal = parseFloat(mortgageAmount);
+      const annualRate = parseFloat(interestRate) / 100 / 12;
+      const totalPayments = parseFloat(mortgageTerm) * 12;
+
+      let monthlyPayment;
+      let totalAmount;
+
+      if (mortgageType === "repayment") {
+        monthlyPayment =
+          (principal * annualRate * Math.pow(1 + annualRate, totalPayments)) /
+          (Math.pow(1 + annualRate, totalPayments) - 1);
+      } else {
+        // Interest-only calculation
+        monthlyPayment = principal * annualRate;
+      }
+
+      totalAmount = totalPayments * monthlyPayment;
+      setMonthlyRepayment(monthlyPayment.toFixed(2));
+      setTotalRepayment(totalAmount);
+      setShowResults(true);
+    }
+  };
+
+  const handleInputChange = (setter) => (e) => {
+    const { value, name } = e.target;
+    const numericValue = value.replace(/[^0-9.]/g, "");
+
+    // Ensure only one decimal point
+    const parts = numericValue.split(".");
+    const formattedValue = parts[0] + (parts.length > 1 ? "." + parts[1] : "");
+
+    setter(formattedValue);
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
   };
 
   return (
@@ -57,6 +110,7 @@ const App = () => {
               setMortgageType("");
               setMonthlyRepayment(null);
               setShowResults(false);
+              setErrors({});
             }}
           >
             Clear all
@@ -67,7 +121,9 @@ const App = () => {
             isLeft={true}
             colSpan={4}
             value={mortgageAmount}
-            onChange={(e) => setMortgageAmount(e.target.value)}
+            onChange={handleInputChange(setMortgageAmount)}
+            error={errors.mortgageAmount}
+            name="mortgageAmount"
           />
           <TextInput
             title="Mortgage Term"
@@ -75,7 +131,9 @@ const App = () => {
             isLeft={false}
             colSpan={2}
             value={mortgageTerm}
-            onChange={(e) => setMortgageTerm(e.target.value)}
+            onChange={handleInputChange(setMortgageTerm)}
+            error={errors.mortgageTerm}
+            name="mortgageTerm"
           />
           <TextInput
             title="Interest Rate"
@@ -83,13 +141,19 @@ const App = () => {
             isLeft={false}
             colSpan={2}
             value={interestRate}
-            onChange={(e) => setInterestRate(e.target.value)}
+            onChange={handleInputChange(setInterestRate)}
+            error={errors.interestRate}
+            name="interestRate"
           />
           <MortgageTypeList
             mortgageTypes={mortgageTypes}
             title="Mortgage type"
-            onChange={(value) => setMortgageType(value)}
+            onChange={(value) => {
+              setMortgageType(value);
+              setErrors((prevErrors) => ({ ...prevErrors, mortgageType: "" }));
+            }}
             selectedMortgageType={mortgageType}
+            error={errors.mortgageType}
           />
           <CalculateRepaymentsBtn onClick={calculateRepayments} />
         </div>
