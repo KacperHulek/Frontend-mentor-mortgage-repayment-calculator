@@ -1,5 +1,5 @@
 import React from "react";
-
+import smallCalculator from "srcassetsimagesicon-calculator.svg";
 const CalculateRepaymentsBtn = ({ onClick }) => {
   return (
     <button
@@ -7,11 +7,7 @@ const CalculateRepaymentsBtn = ({ onClick }) => {
      active:bg-darkLime transition-colors transition-opacity"
       onClick={onClick}
     >
-      <img
-        src="src\assets\images\icon-calculator.svg"
-        alt=""
-        className="w-fit mr-2"
-      />
+      <img src={smallCalculator} alt="" className="w-fit mr-2" />
       <p className="font-bold text-slate-900 block h-fit">
         Calculate Repayments
       </p>

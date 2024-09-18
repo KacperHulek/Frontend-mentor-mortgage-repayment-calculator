@@ -3,6 +3,7 @@ import TextInput from "./components/TextInput/TextInput.jsx";
 import MortgageTypeList from "./components/MortgageTypeList/MortgageTypeList.jsx";
 import CalculateRepaymentsBtn from "./components/CalculateRepaymentsBtn/CalculateRepaymentsBtn.jsx";
 import Results from "./components/Results/Results.jsx";
+import bigCalculator from "srcassetsimagesillustration-empty.svg";
 
 const App = () => {
   const [mortgageAmount, setMortgageAmount] = useState("");
@@ -174,11 +175,7 @@ const App = () => {
         >
           {!showResults ? (
             <>
-              <img
-                src="src\assets\images\illustration-empty.svg"
-                alt=""
-                className="w-fit"
-              />
+              <img src={bigCalculator} alt="" className="w-fit" />
               <h1 className="text-white text-2xl mb-4">Results shown here</h1>
               <p className="text-slate-300 text-center">
                 Complete the form and click "calculate repayments" to see what
