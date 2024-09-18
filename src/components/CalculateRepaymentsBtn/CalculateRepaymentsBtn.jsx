@@ -3,7 +3,7 @@ import React from "react";
 const CalculateRepaymentsBtn = ({ onClick }) => {
   return (
     <button
-      className="col-span-3 rounded-full h-12 bg-lime flex align justify-center items-center mt-6 hover:bg-opacity-65
+      className="col-span-4 md:col-span-3 rounded-full h-12 bg-lime flex align justify-center items-center mt-6 hover:bg-opacity-65
      active:bg-darkLime transition-colors transition-opacity"
       onClick={onClick}
     >

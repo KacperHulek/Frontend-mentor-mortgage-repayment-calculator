@@ -12,14 +12,18 @@ const Results = ({ monthlyRepayment, totalRepayment }) => {
         again.
       </p>
       <div
-        className="bg-darkSlate rounded-md p-8 shadow-lime
+        className="bg-darkSlate rounded-md p-4 sm:p-8 shadow-lime
       shadow-[0_-5px_0px_0px_rgba(0,0,0,0.3)]"
       >
         <h2 className="text-slate-300 mb-4">Your monthly repayments</h2>
-        <p className="text-5xl text-lime mb-8">£{monthlyRepayment}</p>
+        <p className="text-4xl sm:text-5xl text-lime mb-8 break-all">
+          £{monthlyRepayment}
+        </p>
         <hr className="h-0 my-8border border-slate-100 border-opacity-25 mb-8" />
-        <h2 className="text-slate-300">Total you'll repay over the term</h2>
-        <p className="text-white text-xl">£{totalRepayment}</p>
+        <h2 className="text-slate-300 mb-4">Total you'll repay over the term</h2>
+        <p className="text-white text-wrap text-2xl break-all">
+          £{totalRepayment}
+        </p>
       </div>
     </>
   );

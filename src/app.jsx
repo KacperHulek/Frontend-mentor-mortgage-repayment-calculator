@@ -76,8 +76,18 @@ const App = () => {
       }
 
       totalAmount = totalPayments * monthlyPayment;
-      setMonthlyRepayment(monthlyPayment.toFixed(2));
-      setTotalRepayment(totalAmount);
+      setMonthlyRepayment(
+        monthlyPayment
+          .toFixed(2)
+          .toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      );
+      setTotalRepayment(
+        totalAmount
+          .toFixed(2)
+          .toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      );
       setShowResults(true);
     }
   };
@@ -95,14 +105,14 @@ const App = () => {
   };
 
   return (
-    <div className="flex h-full w-full items-center justify-center">
-      <main className="grid grid-cols-2 h-fit max-w-4_5xl bg-white rounded-2xl">
-        <div className="grid grid-cols-4 gap-x-4 gap-y-2 bg-white rounded-l-2xl p-10">
-          <h1 className="text-2xl text-slate-900 col-span-3 mb-8 font-bold">
+    <div className="flex min-h-screen w-full items-center justify-center">
+      <main className="md:grid grid-cols-2 h-fit max-w-4_5xl bg-white rounded-2xl">
+        <div className="grid grid-cols-4 gap-x-4 gap-y-2 bg-white rounded-l-2xl p-6 sm:p-10 ">
+          <h1 className="text-2xl text-slate-900 col-span-4 md:col-span-3 md:mb-8 font-bold">
             Mortgage calculator
           </h1>
           <button
-            className="underline text-right align-top mb-8 text-slate-700 hover:text-slate-900"
+            className="underline text-left md:text-right align-top mb-8 text-slate-700 hover:text-slate-900 text-nowrap"
             onClick={() => {
               setMortgageAmount("");
               setMortgageTerm("");
@@ -160,7 +170,7 @@ const App = () => {
         <div
           className={`bg-slate-900 ${
             showResults ? "" : "flex"
-          } flex-col items-center justify-center p-10 rounded-r-2xl rounded-bl-gigaxl`}
+          } flex-col items-center justify-center p-6 sm:p-10 md:rounded-r-2xl md:rounded-bl-gigaxl`}
         >
           {!showResults ? (
             <>
