@@ -3,7 +3,7 @@ import TextInput from "./components/TextInput/TextInput.jsx";
 import MortgageTypeList from "./components/MortgageTypeList/MortgageTypeList.jsx";
 import CalculateRepaymentsBtn from "./components/CalculateRepaymentsBtn/CalculateRepaymentsBtn.jsx";
 import Results from "./components/Results/Results.jsx";
-import bigCalculator from "src/assets/images/illustration-empty.svg";
+import bigCalculator from "./assets/images/illustration-empty.svg";
 
 const App = () => {
   const [mortgageAmount, setMortgageAmount] = useState("");
