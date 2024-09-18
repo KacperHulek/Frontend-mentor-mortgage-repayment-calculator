@@ -1,5 +1,5 @@
 import React from "react";
-import smallCalculator from "srcassetsimagesicon-calculator.svg";
+import smallCalculator from "src/assets/images/icon-calculator.svg";
 const CalculateRepaymentsBtn = ({ onClick }) => {
   return (
     <button
