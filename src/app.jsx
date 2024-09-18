@@ -108,11 +108,11 @@ const App = () => {
     <div className="flex min-h-screen w-full items-center justify-center">
       <main className="md:grid grid-cols-2 h-fit max-w-4_5xl bg-white rounded-2xl">
         <div className="grid grid-cols-4 gap-x-4 gap-y-2 bg-white rounded-l-2xl p-6 sm:p-10 ">
-          <h1 className="text-2xl text-slate-900 col-span-4 md:col-span-3 md:mb-8 font-bold">
+          <h1 className="text-2xl text-slate-900 col-span-4 md:col-span-3 md:mb-8 font-bold text-nowrap">
             Mortgage calculator
           </h1>
           <button
-            className="underline text-left md:text-right align-top mb-8 text-slate-700 hover:text-slate-900 text-nowrap"
+            className="underline text-left md:text-right align-top mb-3 md:mb-6 text-slate-700 hover:text-slate-900 text-nowrap"
             onClick={() => {
               setMortgageAmount("");
               setMortgageTerm("");
